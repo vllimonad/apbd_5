@@ -9,10 +9,6 @@ namespace apbd5.Controllers;
 [Route("[controller]")]
 public class AnimalController: ControllerBase
 {
-    public AnimalController()
-    {
-        
-    }
     
     [HttpGet("/animals")]
     public IActionResult getAnimals()
@@ -28,20 +24,20 @@ public class AnimalController: ControllerBase
     }
     
     [HttpPost("addAnimal")]
-    public IActionResult addAnimal(Animal animal)
+    public IActionResult addAnimal(int id, string category, string name, double weight, string furColor)
     {
-        AnimalDatabase.animals.Add(animal);
+        AnimalDatabase.animals.Add(new Animal(){id = id, category = category, name = name, weight = weight,furColor = furColor});
         return Ok(AnimalDatabase.animals);
     }
     
     [HttpPut("updateAnimal")]
-    public IActionResult updateAnimal(int id, Animal animal2)
+    public IActionResult updateAnimal(int id, string category, string name, double weight, string furColor)
     {
         var animal = AnimalDatabase.animals.Find(animal => animal.id == id);
-        animal.category = animal2.category;
-        animal.name = animal2.name;
-        animal.weight = animal2.weight;
-        animal.furColor = animal2.furColor;
+        animal.category = category;
+        animal.name = name;
+        animal.weight = weight;
+        animal.furColor = furColor;
         return Ok(animal);
     }
 

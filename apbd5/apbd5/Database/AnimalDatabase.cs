@@ -16,4 +16,6 @@ public class AnimalDatabase
             id = 2, category = "dog", name = "loo", weight = 12.7, furColor = "iyrc"
         }
     };
+
+    public static List<Visit> visits = new List<Visit>();
 }
